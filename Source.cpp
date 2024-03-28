@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 int romanCharValue(char r) {
     switch (r) {
     case 'I': return 1;
@@ -17,7 +16,6 @@ int romanCharValue(char r) {
     }
 }
 
-
 int convertRomanToInt(string s) {
     int total = 0;
     int n = s.length();
@@ -28,7 +26,7 @@ int convertRomanToInt(string s) {
 
         if (firstVal >= secondVal || n == 1) {
             total += firstVal;
-            s.erase(0, 1);
+            s.erase(0, 1); 
         }
         else {
             total += (secondVal - firstVal);
@@ -42,23 +40,18 @@ int convertRomanToInt(string s) {
 }
 
 int main() {
+    string userInput;
+    while (true) {
+        cout << "Enter Roman number or Q to quit: ";
+        getline(cin, userInput);
 
-    cout << "Testing romanCharValue function:\n";
-    cout << "Value of M: " << romanCharValue('M') << endl;
-    cout << "Value of C: " << romanCharValue('C') << endl;
-    cout << "Value of X: " << romanCharValue('X') << endl;
-    cout << "Value of V: " << romanCharValue('V') << endl;
-    cout << "Value of I: " << romanCharValue('I') << endl;
+        if (userInput == "Q") {
+            break;
+        }
 
-  
-    string testRoman1 = "MCMLXXVIII";
-    string testRoman2 = "MMXIX";
-    string testRoman3 = "MCMXCIV";
-
-    cout << "\nTesting convertRomanToInt function:\n";
-    cout << "Roman numeral: " << testRoman1 << ", Decimal value: " << convertRomanToInt(testRoman1) << endl;
-    cout << "Roman numeral: " << testRoman2 << ", Decimal value: " << convertRomanToInt(testRoman2) << endl;
-    cout << "Roman numeral: " << testRoman3 << ", Decimal value: " << convertRomanToInt(testRoman3) << endl;
+        int decimalValue = convertRomanToInt(userInput);
+        cout << userInput << " = " << decimalValue << '\n' << endl;
+    }
 
     return 0;
 }
